@@ -33,3 +33,9 @@ def test_view_product_details(launch_browser, search_input, expected_url, expect
 
     actual_price = product_page.get_product_price()
     assert actual_price is not None, f"Product price is empty!"
+
+
+def test_sort_by_product(launch_browser):
+    page = launch_browser
+    product_page = ProductPage(page)
+    product_page.sort_by_product()

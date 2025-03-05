@@ -1,3 +1,4 @@
+from automation.Locators.HPageLocators import HPageLocators
 from automation.Locators.PLPageLocator import PLPageLocator
 
 
@@ -26,3 +27,12 @@ class ProductPage:
         price = price_element.text_content()
         print(f'Product price is - {price}')
         return price
+
+    def sort_by_product(self):
+        self.page.locator(PLPageLocator.GEARUP_NAV).click()
+        self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
+        self.page.locator(PLPageLocator.SOR_BY_FILTER).click()
+        self.page.locator(PLPageLocator.SORT_ATOZ).click()
+        text_visible = self.page.locator(PLPageLocator.SORT_RUNNING_PRODUCTS_LIST).text_content()
+        print(f'Sort list visibility - {text_visible}')
+        self.page.locator(HPageLocators.LOGO_IMG).click()
