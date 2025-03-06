@@ -45,4 +45,12 @@ def test_verify_brand_filter(launch_browser):
     product_page = ProductPage(page)
     product_page.filter_by_brand()
 
+def test_verify_filtering_particular_price_product(launch_browser):
+    page = launch_browser
+    homepage = HomePage(page)
+    product_page = ProductPage(page)
+    homepage.do_search("Smartwatch")
+    price_filtered = product_page.sort_by_particular_price(2000.00,8000.00)
+    assert price_filtered, "price filter is incorrect"
+
 

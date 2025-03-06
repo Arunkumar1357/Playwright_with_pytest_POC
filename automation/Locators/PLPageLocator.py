@@ -11,4 +11,7 @@ class PLPageLocator:
     SORT_RUNNING_PRODUCTS_LIST = "//a[contains(.,'Nurvv Runn Smart Insoles')]"
     BRAND_CHECKBOX = "(//ul[@class='check']/li)[2]"
     BRAND_LIST_TEXT = "(//span[@class='small'])[1]"
+    MINIMUM_PRICE = "//input[@id='min']"
+    MAXIMUM_PRICE = "//input[@id='max']"
+    PRODUCT_PRICE_LIST = "//div[@class='static']/p[@class='price']"
 
