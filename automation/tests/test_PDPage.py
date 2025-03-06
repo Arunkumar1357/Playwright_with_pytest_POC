@@ -39,3 +39,10 @@ def test_sort_by_product(launch_browser):
     page = launch_browser
     product_page = ProductPage(page)
     product_page.sort_by_product()
+
+def test_verify_brand_filter(launch_browser):
+    page = launch_browser
+    product_page = ProductPage(page)
+    product_page.filter_by_brand()
+
+

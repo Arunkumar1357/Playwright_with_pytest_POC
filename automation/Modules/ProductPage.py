@@ -36,3 +36,16 @@ class ProductPage:
         text_visible = self.page.locator(PLPageLocator.SORT_RUNNING_PRODUCTS_LIST).text_content()
         print(f'Sort list visibility - {text_visible}')
         self.page.locator(HPageLocators.LOGO_IMG).click()
+
+    def filter_by_brand(self):
+        self.page.locator(PLPageLocator.SMARTSTYLE_NAV).click()
+        self.page.locator(PLPageLocator.SMARTWATCH_SUBNAV).click()
+        brand_name = self.page.locator(PLPageLocator.BRAND_CHECKBOX).text_content().strip()
+        brand_name = ''.join([i for i in brand_name if not i.isdigit() and i not in "()."]).strip()
+        self.page.locator(PLPageLocator.BRAND_CHECKBOX).click()
+        self.page.wait_for_timeout(1000)
+        filter_brand_name = self.page.locator(PLPageLocator.BRAND_LIST_TEXT).text_content().strip()
+        assert brand_name == filter_brand_name, f"Brand name mismatch! Expected Brand Name: {brand_name}, Actual Brand Name: {filter_brand_name}"
+        print(f'Brand name is - {brand_name}')
+        print(f'Brand name filter is - {filter_brand_name}')
+        self.page.locator(HPageLocators.LOGO_IMG).click()
