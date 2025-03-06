@@ -73,4 +73,11 @@ class ProductPage:
             print("Product price is not filtered correctly")
             return False
 
+    def product_list_view(self):
+        self.page.locator(PLPageLocator.GEARUP_NAV).click()
+        self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
+        self.page.wait_for_timeout(1000)
+        self.page.locator(PLPageLocator.LIST_VIEW_BTN).click()
+
+
 

@@ -27,7 +27,6 @@ def test_view_product_details(launch_browser, search_input, expected_url, expect
 
     actual_productname = product_page.click_the_product(PLPageLocator.PRODUCT_LIST)
     assert actual_productname == expected_product_name, f"Product name Mismatch! Expected Product Name: {expected_product_name}, Actual Product Name: {actual_productname}"
-
     actual_description = product_page.get_product_description()
     assert actual_description is not None, f"Product description is empty!"
 
@@ -40,17 +39,24 @@ def test_sort_by_product(launch_browser):
     product_page = ProductPage(page)
     product_page.sort_by_product()
 
+
 def test_verify_brand_filter(launch_browser):
     page = launch_browser
     product_page = ProductPage(page)
     product_page.filter_by_brand()
+
 
 def test_verify_filtering_particular_price_product(launch_browser):
     page = launch_browser
     homepage = HomePage(page)
     product_page = ProductPage(page)
     homepage.do_search("Smartwatch")
-    price_filtered = product_page.sort_by_particular_price(2000.00,8000.00)
+    price_filtered = product_page.sort_by_particular_price(2000.00, 8000.00)
     assert price_filtered, "price filter is incorrect"
 
-
+def test_verify_list_view(launch_browser):
+    page = launch_browser
+    product_page = ProductPage(page)
+    product_page.product_list_view()
+    is_collection_visible = page.locator(PLPageLocator.COLLECTION_LIST).is_visible()
+    assert is_collection_visible, "The product collection has not changed to the list view format"

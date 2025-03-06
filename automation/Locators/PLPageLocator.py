@@ -14,4 +14,6 @@ class PLPageLocator:
     MINIMUM_PRICE = "//input[@id='min']"
     MAXIMUM_PRICE = "//input[@id='max']"
     PRODUCT_PRICE_LIST = "//div[@class='static']/p[@class='price']"
+    LIST_VIEW_BTN = "//i[@class='icon-view-list']"
+    COLLECTION_LIST = "//ul[@class='l4cl list']"
 
