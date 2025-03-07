@@ -54,9 +54,18 @@ def test_verify_filtering_particular_price_product(launch_browser):
     price_filtered = product_page.sort_by_particular_price(2000.00, 8000.00)
     assert price_filtered, "price filter is incorrect"
 
+
 def test_verify_list_view(launch_browser):
     page = launch_browser
     product_page = ProductPage(page)
     product_page.product_list_view()
     is_collection_visible = page.locator(PLPageLocator.COLLECTION_LIST).is_visible()
     assert is_collection_visible, "The product collection has not changed to the list view format"
+
+
+def test_verify_grid_view(launch_browser):
+    page = launch_browser
+    product_page = ProductPage(page)
+    product_page.product_grid_view()
+    is_collection_visible = page.locator(PLPageLocator.COLLECTION_GRID).is_visible()
+    assert is_collection_visible, "The product collection has not changed to the grid view format"

@@ -16,4 +16,5 @@ class PLPageLocator:
     PRODUCT_PRICE_LIST = "//div[@class='static']/p[@class='price']"
     LIST_VIEW_BTN = "//i[@class='icon-view-list']"
     COLLECTION_LIST = "//ul[@class='l4cl list']"
-
+    GRID_VIEW_BTN = "//i[@class='icon-view-grid']"
+    COLLECTION_GRID = "//ul[@class='l4cl']"
