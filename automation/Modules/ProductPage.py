@@ -51,18 +51,23 @@ class ProductPage:
         print(f'Brand name filter is - {filter_brand_name}')
         self.page.locator(HPageLocators.LOGO_IMG).click()
 
-    def sort_by_particular_price(self,min_number:float,max_number:float)->bool:
+    def sort_by_particular_price(self, min_number: float, max_number: float) -> bool:
         minimum = str(min_number)
         maximum = str(max_number)
         self.page.locator(PLPageLocator.MINIMUM_PRICE).fill(minimum)
         self.page.locator(PLPageLocator.MAXIMUM_PRICE).fill(maximum)
         self.page.wait_for_timeout(1000)
-        min_product_price = self.page.locator(PLPageLocator.PRODUCT_PRICE_LIST).first.text_content().replace("₹", "").replace(",", "").strip()
-        max_product_price = self.page.locator(PLPageLocator.PRODUCT_PRICE_LIST).last.text_content().replace("₹", "").replace(",", "").strip()
+        min_product_price = self.page.locator(PLPageLocator.PRODUCT_PRICE_LIST).first.text_content().replace("₹",
+                                                                                                             "").replace(
+            ",", "").strip()
+        max_product_price = self.page.locator(PLPageLocator.PRODUCT_PRICE_LIST).last.text_content().replace("₹",
+                                                                                                            "").replace(
+            ",", "").strip()
         print(f'Minimum price is - {minimum}')
         print(f'Maximum price is - {maximum}')
         print(f'Minimum price product prize is - {min_product_price}')
         print(f'Maximum price product prize is - {max_product_price}')
+        print(f'Minimum price product prize is - {(min_product_price)}')
         min_number_actual = float(min_product_price)
         max_number_actual = float(max_product_price)
 
@@ -84,4 +89,3 @@ class ProductPage:
         self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
         self.page.wait_for_timeout(1000)
         self.page.locator(PLPageLocator.GRID_VIEW_BTN).click()
-
