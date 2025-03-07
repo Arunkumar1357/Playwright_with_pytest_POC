@@ -88,3 +88,9 @@ class ProductPage:
         self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
         self.page.wait_for_timeout(1000)
         self.page.locator(PLPageLocator.GRID_VIEW_BTN).click()
+
+    def remove_all_brand_filter(self):
+        self.page.locator(PLPageLocator.GEARUP_NAV).click()
+        self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
+        self.page.locator(PLPageLocator.BRAND_CHECKBOX).click()
+

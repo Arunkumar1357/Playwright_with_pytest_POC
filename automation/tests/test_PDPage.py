@@ -69,3 +69,12 @@ def test_verify_grid_view(launch_browser):
     product_page.product_grid_view()
     is_collection_visible = page.locator(PLPageLocator.COLLECTION_GRID).is_visible()
     assert is_collection_visible, "The product collection has not changed to the grid view format"
+
+
+def test_remove_all_brand_filter(launch_browser):
+    page = launch_browser
+    product_page = ProductPage(page)
+    product_page.remove_all_brand_filter()
+    current_filter_text = page.locator(PLPageLocator.CURRENT_FILTER_TEXT)
+    page.locator(PLPageLocator.REMOVE_ALL_FILTERS).click()
+    assert current_filter_text.is_visible(), f'Current filter products are not removed'

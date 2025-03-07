@@ -18,3 +18,5 @@ class PLPageLocator:
     COLLECTION_LIST = "//ul[@class='l4cl list']"
     GRID_VIEW_BTN = "//i[@class='icon-view-grid']"
     COLLECTION_GRID = "//ul[@class='l4cl']"
+    CURRENT_FILTER_TEXT = "//span[contains(.,'Your current filters')]"
+    REMOVE_ALL_FILTERS = "//a[@class='remove-all']"
