@@ -67,7 +67,6 @@ class ProductPage:
         print(f'Maximum price is - {maximum}')
         print(f'Minimum price product prize is - {min_product_price}')
         print(f'Maximum price product prize is - {max_product_price}')
-        print(f'Minimum price product prize is - {(min_product_price)}')
         min_number_actual = float(min_product_price)
         max_number_actual = float(max_product_price)
 
