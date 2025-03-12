@@ -22,3 +22,4 @@ class PLPageLocator:
     INSTOCK_CHECKBOX           = "//ul[@class='check']/li/label[@class='strong']"
     LAST_STOCK_PRODUCT         = "(//span[text()='Last stock!'])[1]"
     TOTAL_PRODUCTS_COUNT       = "//main[@id='content']/div/div/div/ul/li"
+    SMART_WATCH            = "//a[text()='Withings SCAN Smart Watch']"
