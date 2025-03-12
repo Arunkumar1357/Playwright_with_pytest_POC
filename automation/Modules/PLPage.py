@@ -2,32 +2,9 @@ from automation.Locators.HPageLocators import HPageLocators
 from automation.Locators.PLPageLocator import PLPageLocator
 
 
-class ProductPage:
+class PLPage:
     def __init__(self, page):
         self.page = page
-
-    def click_the_product(self, selector):
-        product_element = self.page.locator(selector).first
-        assert product_element.is_visible(), "Product is not visible!"
-        product_name = product_element.first.text_content()
-        print(f'Product name is - {product_name}')
-        product_element.first.click()
-        return product_name
-
-    def get_product_description(self):
-        description_element = self.page.locator(PLPageLocator.DESCRIPTION_HEADING).first
-        description_element.first.is_visible(), "Description is not visible!"
-        description = description_element.first.text_content()
-        print(f'Product description is - {description}')
-        return description
-
-    def get_product_price(self):
-        price_element = self.page.locator(PLPageLocator.PRODUCT_PRICE)
-        price_element.is_visible(), "Price is not visible!"
-        price = price_element.text_content()
-        print(f'Product price is - {price}')
-        self.page.locator(HPageLocators.LOGO_IMG).click()
-        return price
 
     def sort_by_product(self):
         self.page.locator(PLPageLocator.GEARUP_NAV).click()
@@ -94,3 +71,14 @@ class ProductPage:
         self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
         self.page.locator(PLPageLocator.BRAND_CHECKBOX).click()
 
+    def filter_instack_product(self):
+        self.page.locator(PLPageLocator.TECH_ESSENTIAL_NAV).click()
+        self.page.locator(PLPageLocator.APPLE_WATCH_NAV).click()
+
+    def filter_instock_products_and_verify_count_changing(self):
+        self.page.locator(PLPageLocator.TECH_ESSENTIAL_NAV).click()
+        self.page.locator(PLPageLocator.APPLE_WATCH_NAV).click()
+        self.page.wait_for_timeout(1000)
+
+    def get_product_count(self):
+        return self.page.locator(PLPageLocator.TOTAL_PRODUCTS_COUNT).count()

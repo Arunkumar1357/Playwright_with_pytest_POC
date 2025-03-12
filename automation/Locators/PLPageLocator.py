@@ -1,7 +1,4 @@
 class PLPageLocator:
-    PRODUCT_LIST = "//ul[@id='collection']/li/following::h3/a"
-    DESCRIPTION_HEADING = "//div[@class='tabs-inner']/h2"
-    PRODUCT_PRICE = "//p[@class='s1pr price']"
     GEARUP_NAV = "(//li[@class='sub'])[2]"
     SMARTSTYLE_NAV = "//ul[@data-type='horizontal-nav']/li/a[contains(.,'Smart Style')]"
     RUNNING_SUBNAV = "//ul[@data-type='horizontal-nav']/li/ul/li/ul/li/a[contains(.,'Running')]"
@@ -20,3 +17,8 @@ class PLPageLocator:
     COLLECTION_GRID = "//ul[@class='l4cl']"
     CURRENT_FILTER_TEXT = "//span[contains(.,'Your current filters')]"
     REMOVE_ALL_FILTERS = "//a[@class='remove-all']"
+    TECH_ESSENTIAL_NAV = "//ul[@data-type='horizontal-nav']/li/a[contains(.,'Tech Essentials')]"
+    APPLE_WATCH_NAV = "//ul[@data-type='horizontal-nav']/li/ul/li/ul/li/a[contains(.,'Apple Watch Band')]"
+    INSTOCK_CHECKBOX = "//ul[@class='check']/li/label[@class='strong']"
+    LAST_STOCK_PRODUCT = "(//span[text()='Last stock!'])[1]"
+    TOTAL_PRODUCTS_COUNT = "//main[@id='content']/div/div/div/ul/li"
