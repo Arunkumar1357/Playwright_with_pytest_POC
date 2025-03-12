@@ -53,7 +53,7 @@ def test_remove_all_brand_filter(launch_browser):
 def test_filter_stock_product(launch_browser):
     page = launch_browser
     product_page = PLPage(page)
-    product_page.filter_instack_product()
+    product_page.filter_instock_product()
     last_stock_product = page.locator(PLPageLocator.LAST_STOCK_PRODUCT).is_visible()
     assert last_stock_product, "The stock product is not visible"
 
