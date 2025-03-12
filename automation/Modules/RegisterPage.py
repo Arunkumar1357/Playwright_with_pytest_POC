@@ -20,7 +20,6 @@ class RegisterPage:
         page.locator(RegPageLoc.EMAIL_ADDRESS).fill(TestData.email)
         page.locator(RegPageLoc.NEW_PASSWORD).fill(TestData.password)
         page.locator(RegPageLoc.CREATE_ACCOUNT_SUBMIT_BTN).click()
-        page.locator(HPageLocators.LOGO_IMG).click()
 
     def login_account(self):
         page = self.page
@@ -35,5 +34,3 @@ class RegisterPage:
         page.locator(RegPageLoc.SIGNIN_BTN).click()
         page.locator(RegPageLoc.LOGIN_EMAIL_ADDRESS).fill(TestData.invalid_email)
         page.locator(RegPageLoc.LOGIN_PASSWORD).fill(TestData.invalid_password)
-        page.locator(RegPageLoc.LOGIN_BTN).click()
-        page.locator(HPageLocators.LOGO_IMG).click()

@@ -22,11 +22,14 @@ def test_view_product_details(launch_browser, search_input, expected_url, expect
     homepage = HomePage(page)
     product_detail_page = PDPage(page)
     actual_url = homepage.do_search(search_input)
+
     assert actual_url == expected_url, f"Search url Mismatch! Expected URL: {expected_url}, Actual URL: {actual_url}"
     actual_productname = product_detail_page.click_the_product(PDPageLocators.PRODUCT_LIST)
+
     assert actual_productname == expected_product_name, f"Product name Mismatch! Expected Product Name: {expected_product_name}, Actual Product Name: {actual_productname}"
     actual_description = product_detail_page.get_product_description()
-    assert actual_description is not None, f"Product description is empty!"
 
+    assert actual_description is not None, f"Product description is empty!"
     actual_price = product_detail_page.get_product_price()
+
     assert actual_price is not None, f"Product price is empty!"

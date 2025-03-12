@@ -6,7 +6,8 @@ class PDPage:
         self.page = page
 
     def click_the_product(self, selector):
-        product_element = self.page.locator(selector).first
+        page = self.page
+        product_element = page.locator(selector).first
         assert product_element.is_visible(), "Product is not visible!"
         product_name = product_element.first.text_content()
         print(f'Product name is - {product_name}')
@@ -14,16 +15,18 @@ class PDPage:
         return product_name
 
     def get_product_description(self):
-        description_element = self.page.locator(PDPageLocators.DESCRIPTION_HEADING).first
+        page = self.page
+        description_element = page.locator(PDPageLocators.DESCRIPTION_HEADING).first
         description_element.first.is_visible(), "Description is not visible!"
         description = description_element.first.text_content()
         print(f'Product description is - {description}')
         return description
 
     def get_product_price(self):
-        price_element = self.page.locator(PDPageLocators.PRODUCT_PRICE)
+        page = self.page
+        price_element = page.locator(PDPageLocators.PRODUCT_PRICE)
         price_element.is_visible(), "Price is not visible!"
         price = price_element.text_content()
         print(f'Product price is - {price}')
-        self.page.locator(HPageLocators.LOGO_IMG).click()
+        page.locator(HPageLocators.LOGO_IMG).click()
         return price

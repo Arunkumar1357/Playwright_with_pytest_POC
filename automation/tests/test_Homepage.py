@@ -20,7 +20,7 @@ def test_product_search(launch_browser):
         Home_page.product_search()
         smartwatch = launch_browser.get_by_text("Withings SCAN Smart Watch", exact=True)
         smartwatch.wait_for(state='visible')
-        time.sleep(20)
+        page.wait_for_timeout(1000)
         print("Product found: Withings SCAN Smart Watch")
         assert smartwatch.is_visible(), "Smartwatch is not visible on the page."
         page.locator(HPageLocators.LOGO_IMG).click()

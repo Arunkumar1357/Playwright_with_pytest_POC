@@ -1,3 +1,4 @@
+from automation.Locators.HPageLocators import HPageLocators
 from automation.Locators.PLPageLocator import PLPageLocator
 from automation.Modules.HomePage import HomePage
 from automation.Modules.PLPage import PLPage
@@ -69,6 +70,8 @@ def test_filter_stock_and_remove_product(launch_browser):
     page.locator(PLPageLocator.REMOVE_ALL_FILTERS).click()
     page.wait_for_timeout(5000)
     final_product_count = product_page.get_product_count()
+    page.locator(HPageLocators.LOGO_IMG).click()
+    page.wait_for_timeout(1000)
     print(f"Initial Product Count: {initial_product_count}")
     print(f"Filter Product Count: {filter_product_count}")
     print(f"Final Product Count: {final_product_count}")

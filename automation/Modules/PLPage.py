@@ -7,43 +7,47 @@ class PLPage:
         self.page = page
 
     def sort_by_product(self):
-        self.page.locator(PLPageLocator.GEARUP_NAV).click()
-        self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
-        self.page.locator(PLPageLocator.SOR_BY_FILTER).click()
-        self.page.locator(PLPageLocator.SORT_ATOZ).click()
-        text_visible = self.page.locator(PLPageLocator.SORT_RUNNING_PRODUCTS_LIST).text_content()
+        page = self.page
+        page.locator(PLPageLocator.GEARUP_NAV).click()
+        page.locator(PLPageLocator.RUNNING_SUBNAV).click()
+        page.locator(PLPageLocator.SOR_BY_FILTER).click()
+        page.locator(PLPageLocator.SORT_ATOZ).click()
+        text_visible = page.locator(PLPageLocator.SORT_RUN_PRODUCT_LIST).text_content()
         print(f'Sort list visibility - {text_visible}')
-        self.page.locator(HPageLocators.LOGO_IMG).click()
+        page.locator(HPageLocators.LOGO_IMG).click()
 
     def filter_by_brand(self):
-        self.page.locator(PLPageLocator.SMARTSTYLE_NAV).click()
-        self.page.locator(PLPageLocator.SMARTWATCH_SUBNAV).click()
-        brand_name = self.page.locator(PLPageLocator.BRAND_CHECKBOX).text_content().strip()
+        page = self.page
+        page.locator(PLPageLocator.SMARTSTYLE_NAV).click()
+        page.locator(PLPageLocator.SMARTWATCH_SUBNAV).click()
+        brand_name = page.locator(PLPageLocator.BRAND_CHECKBOX).text_content().strip()
         brand_name = ''.join([i for i in brand_name if not i.isdigit() and i not in "()."]).strip()
-        self.page.locator(PLPageLocator.BRAND_CHECKBOX).click()
-        self.page.wait_for_timeout(1000)
-        filter_brand_name = self.page.locator(PLPageLocator.BRAND_LIST_TEXT).text_content().strip()
-        assert brand_name == filter_brand_name, f"Brand name mismatch! Expected Brand Name: {brand_name}, Actual Brand Name: {filter_brand_name}"
+        page.locator(PLPageLocator.BRAND_CHECKBOX).click()
+        page.wait_for_timeout(1000)
+        filter_brand_name = page.locator(PLPageLocator.BRAND_LIST_TEXT).text_content().strip()
+        assert brand_name == filter_brand_name, f"Brand name mismatch! Expected: {brand_name}, Actual: {filter_brand_name}"
         print(f'Brand name is - {brand_name}')
         print(f'Brand name filter is - {filter_brand_name}')
-        self.page.locator(HPageLocators.LOGO_IMG).click()
+        page.locator(HPageLocators.LOGO_IMG).click()
 
     def sort_by_particular_price(self, min_number: float, max_number: float) -> bool:
+        page = self.page
         minimum = str(min_number)
         maximum = str(max_number)
-        self.page.locator(PLPageLocator.MINIMUM_PRICE).fill(minimum)
-        self.page.locator(PLPageLocator.MAXIMUM_PRICE).fill(maximum)
-        self.page.wait_for_timeout(1000)
-        min_product_price = self.page.locator(PLPageLocator.PRODUCT_PRICE_LIST).first.text_content().replace("₹",
-                                                                                                             "").replace(
+        page.locator(PLPageLocator.MINIMUM_PRICE).fill(minimum)
+        page.locator(PLPageLocator.MAXIMUM_PRICE).fill(maximum)
+        page.wait_for_timeout(1000)
+        min_product_price = page.locator(PLPageLocator.PRODUCT_PRICE_LIST).first.text_content().replace("₹",
+                                                                                                        "").replace(",",
+                                                                                                                    "").strip()
+        max_product_price = page.locator(PLPageLocator.PRODUCT_PRICE_LIST).last.text_content().replace("₹", "").replace(
             ",", "").strip()
-        max_product_price = self.page.locator(PLPageLocator.PRODUCT_PRICE_LIST).last.text_content().replace("₹",
-                                                                                                            "").replace(
-            ",", "").strip()
+
         print(f'Minimum price is - {minimum}')
         print(f'Maximum price is - {maximum}')
-        print(f'Minimum price product prize is - {min_product_price}')
-        print(f'Maximum price product prize is - {max_product_price}')
+        print(f'Minimum price product price is - {min_product_price}')
+        print(f'Maximum price product price is - {max_product_price}')
+
         min_number_actual = float(min_product_price)
         max_number_actual = float(max_product_price)
 
@@ -55,30 +59,36 @@ class PLPage:
             return False
 
     def product_list_view(self):
-        self.page.locator(PLPageLocator.GEARUP_NAV).click()
-        self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
-        self.page.wait_for_timeout(1000)
-        self.page.locator(PLPageLocator.LIST_VIEW_BTN).click()
+        page = self.page
+        page.locator(PLPageLocator.GEARUP_NAV).click()
+        page.locator(PLPageLocator.RUNNING_SUBNAV).click()
+        page.wait_for_timeout(1000)
+        page.locator(PLPageLocator.LIST_VIEW_BTN).click()
 
     def product_grid_view(self):
-        self.page.locator(PLPageLocator.GEARUP_NAV).click()
-        self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
-        self.page.wait_for_timeout(1000)
-        self.page.locator(PLPageLocator.GRID_VIEW_BTN).click()
+        page = self.page
+        page.locator(PLPageLocator.GEARUP_NAV).click()
+        page.locator(PLPageLocator.RUNNING_SUBNAV).click()
+        page.wait_for_timeout(1000)
+        page.locator(PLPageLocator.GRID_VIEW_BTN).click()
 
     def remove_all_brand_filter(self):
-        self.page.locator(PLPageLocator.GEARUP_NAV).click()
-        self.page.locator(PLPageLocator.RUNNING_SUBNAV).click()
-        self.page.locator(PLPageLocator.BRAND_CHECKBOX).click()
+        page = self.page
+        page.locator(PLPageLocator.GEARUP_NAV).click()
+        page.locator(PLPageLocator.RUNNING_SUBNAV).click()
+        page.locator(PLPageLocator.BRAND_CHECKBOX).click()
 
-    def filter_instack_product(self):
-        self.page.locator(PLPageLocator.TECH_ESSENTIAL_NAV).click()
-        self.page.locator(PLPageLocator.APPLE_WATCH_NAV).click()
+    def filter_instock_product(self):
+        page = self.page
+        page.locator(PLPageLocator.TECH_ESSENTIAL_NAV).click()
+        page.locator(PLPageLocator.APPLE_WATCH_NAV).click()
 
     def filter_instock_products_and_verify_count_changing(self):
-        self.page.locator(PLPageLocator.TECH_ESSENTIAL_NAV).click()
-        self.page.locator(PLPageLocator.APPLE_WATCH_NAV).click()
-        self.page.wait_for_timeout(1000)
+        page = self.page
+        page.locator(PLPageLocator.TECH_ESSENTIAL_NAV).click()
+        page.locator(PLPageLocator.APPLE_WATCH_NAV).click()
+        page.wait_for_timeout(1000)
 
     def get_product_count(self):
-        return self.page.locator(PLPageLocator.TOTAL_PRODUCTS_COUNT).count()
+        page = self.page
+        return page.locator(PLPageLocator.TOTAL_PRODUCTS_COUNT).count()
