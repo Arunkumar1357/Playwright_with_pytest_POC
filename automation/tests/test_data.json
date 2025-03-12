@@ -1,5 +1,11 @@
 {
   "search_data": "watch",
   "expected_url": "https://wearables.in/search?q=watch",
-  "expected_product_name": "ActionBand for Apple Watch"
+  "expected_product_name": "ActionBand for Apple Watch",
+  "mailid": "test@example.com",
+  "firstname": "John",
+  "lastname": "Doe",
+  "company_name": "TestCorp",
+  "address": "123 Street",
+  "phone_number": "9876543210"
 }
