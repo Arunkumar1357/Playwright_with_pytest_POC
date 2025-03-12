@@ -19,6 +19,6 @@ class HomePage:
         self.page.locator(HPageLocators.SEARCH_FIELD).click()
         self.page.locator(HPageLocators.SEARCH_FIELD).fill(search_input)
         self.page.locator(HPageLocators.SEARCH_SUBMIT).click()
-        self.page.locator(HPageLocators.LOGO_IMG).click()
+        self.page.wait_for_timeout(1000)
         return self.page.url
 
