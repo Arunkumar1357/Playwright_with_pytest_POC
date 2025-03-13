@@ -9,6 +9,7 @@ class HomePage:
 
     def verify_logo(self):
         page = self.page
+        page.wait_for_timeout(1000)
         assert page.locator(HPageLocators.LOGO_IMG).is_visible(), "Logo is not visible!"
 
     def product_search(self):

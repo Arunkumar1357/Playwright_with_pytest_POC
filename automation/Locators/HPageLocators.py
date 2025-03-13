@@ -7,3 +7,4 @@ class HPageLocators:
     PLAYZONE_NAV                    = "//ul[@data-type='horizontal-nav']/li/a[contains(.,'Play Zone')]"
     SEARCH_FIELD                    = "//input[@id='search_main']"
     SEARCH_SUBMIT                   = "(//button[@type='submit'])[1]"
+    AIPOWER_PRODUCT                 = "//a[text()='Apple Watch Case - RSC - ONYX BLACK']"

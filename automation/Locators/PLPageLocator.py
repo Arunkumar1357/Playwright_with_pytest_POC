@@ -24,3 +24,5 @@ class PLPageLocator:
     TOTAL_PRODUCTS_COUNT       = "//main[@id='content']/div/div/div/ul/li"
     SMART_WATCH                = "//a[text()='Withings SCAN Smart Watch']"
     TICWATCH_PRODUCT           = "//a[text()='Mobvoi - TicWatch E2 OS Smart Watch - Black']"
+    PRO10_PRODUCT              = "//a[text()='More Pro FT10 Smart Watch']"
+

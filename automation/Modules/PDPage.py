@@ -1,5 +1,7 @@
+from automation.Locators.CheckoutPage import CheckoutPageLocators
 from automation.Locators.HPageLocators import HPageLocators
 from automation.Locators.PDPageLocators import PDPageLocators
+
 
 class PDPage:
     def __init__(self, page):
@@ -28,5 +30,5 @@ class PDPage:
         price_element.is_visible(), "Price is not visible!"
         price = price_element.text_content()
         print(f'Product price is - {price}')
-        page.locator(HPageLocators.LOGO_IMG).click()
+        page.locator(CheckoutPageLocators.CHECKOUT_PAGE_LOGO).click()
         return price

@@ -1,5 +1,5 @@
 from playwright.sync_api import Page
-
+import re
 from automation.Locators.CartPLocators import CartPLocators
 from automation.Locators.CheckoutPage import CheckoutPageLocators
 from automation.Locators.HPageLocators import HPageLocators
@@ -32,7 +32,7 @@ class CartPage:
         page.locator(HPageLocators.LOGO_IMG).click()
         page.wait_for_timeout(1000)
 
-    def checkout(self,mailid,fname,lname,company_name,address,phno,):
+    def checkout(self, mailid, fname, lname, company_name, address, phno, ):
         page = self.page
         page.locator(PLPageLocator.TICWATCH_PRODUCT).click()
         page.locator(CartPLocators.ADD_TO_CART_BTN).click()
@@ -51,5 +51,29 @@ class CartPage:
         page.locator(CheckoutPageLocators.SAVE_TEXT_BOX).click()
         page.locator(CheckoutPageLocators.SHIPPING_RADIO_BTN).click()
         page.locator(CheckoutPageLocators.BILLING_BAYNOW_BTN).click()
+        page.wait_for_timeout(1000)
         page.locator(CheckoutPageLocators.CHECKOUT_PAGE_LOGO).click()
 
+    def delete_product(self):
+        page = self.page
+        page.locator(PLPageLocator.PRO10_PRODUCT).click()
+        page.locator(CartPLocators.ADD_TO_CART_BTN).click()
+        page.locator(CartPLocators.MINI_CART_REMOVE_BTN).click()
+        page.wait_for_timeout(1000)
+        page.locator(CartPLocators.MINI_CART_CLOSE_BTN).click()
+        page.locator(HPageLocators.LOGO_IMG).click()
+
+    def clean_and_parse_price(self, price_text: str) -> float:
+        cleaned_price = re.sub(r"[^\d.]", "", price_text)
+        return float(cleaned_price)
+
+    def buy_now_product(self):
+        page = self.page
+        page.wait_for_timeout(1000)
+        page.locator(HPageLocators.AIPOWER_PRODUCT).click()
+        page.wait_for_timeout(1000)
+        page.locator(PDPageLocators.COLOR_DROPDOWN).click()
+        page.locator(PDPageLocators.COLOR_CHOOSING).click()
+        page.locator(PDPageLocators.SIZE_DROPDOWN_BTN).click()
+        page.locator(PDPageLocators.SIZE_CHOOSING).click()
+        page.wait_for_timeout(1000)
