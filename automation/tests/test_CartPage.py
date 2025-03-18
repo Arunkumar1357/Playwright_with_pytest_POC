@@ -59,5 +59,6 @@ def test_initial_and_final_rate_difference(launch_browser):
     final_rate_count = page.locator(CheckoutPageLocators.TOTAL_RATE).text_content().strip()
     final_rate = cart_page.clean_and_parse_price(final_rate_count)
     print(f"Final Rate: {final_rate}")
+    page.wait_for_timeout(1000)
+    page.locator(CheckoutPageLocators.CHECKOUT_PAGE_LOGO_DIR).click()
     assert initial_rate != final_rate, "Product rate count should be different after increasing the count"
-    page.locator(CheckoutPageLocators.CHECKOUT_PAGE_LOGO).click()

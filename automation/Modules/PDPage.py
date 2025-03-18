@@ -30,5 +30,5 @@ class PDPage:
         price_element.is_visible(), "Price is not visible!"
         price = price_element.text_content()
         print(f'Product price is - {price}')
-        page.locator(CheckoutPageLocators.CHECKOUT_PAGE_LOGO).click()
+        page.locator(HPageLocators.LOGO_IMG).click()
         return price
