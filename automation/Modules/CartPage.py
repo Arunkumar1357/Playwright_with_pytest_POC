@@ -76,4 +76,3 @@ class CartPage:
         page.locator(PDPageLocators.COLOR_CHOOSING).click()
         page.locator(PDPageLocators.SIZE_DROPDOWN_BTN).click()
         page.locator(PDPageLocators.SIZE_CHOOSING).click()
-        page.wait_for_timeout(1000)

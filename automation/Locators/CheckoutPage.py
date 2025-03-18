@@ -9,5 +9,6 @@ class CheckoutPageLocators:
     SHIPPING_RADIO_BTN                = "//input[@id='billing_address_selector-shipping_address']"
     BILLING_BAYNOW_BTN                = "//button[@id='checkout-pay-button']"
     CHECKOUT_PAGE_LOGO                = "//a[@href='https://wearables.in']"
+    CHECKOUT_PAGE_LOGO_DIR            = "//a[@href='https://wearables.in/']"
     TOTAL_RATE                        = "(//div[@role='cell'])[7]"
 
